@@ -109,6 +109,10 @@ func Issues(ctx *middleware.Context) {
 			ctx.Handle(500, "issue.Issues(GetPoster)", fmt.Errorf("[#%d]%v", issues[i].Id, err))
 			return
 		}
+
+		if err = issues[i].GetLabels(); err != nil {
+			ctx.Handle(500, "issue.Issues(GetLabels)", fmt.Errorf("[#%d]%v", issues[i].Id, err))
+		}
 	}
 
 	var uid int64 = -1

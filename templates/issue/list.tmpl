@@ -69,7 +69,13 @@
                 {{range .Issues}}{{if .Poster}}
                 <div class="list-group-item issue-item{{if not .IsRead}} unread{{end}}" id="issue-{{.Id}}">
                     <span class="number pull-right">#{{.Index}}</span>
-                    <h5 class="title"><a href="{{$.RepoLink}}/issues/{{.Index}}">{{.Name}}</a></h5>
+                    <h5 class="title"><a href="{{$.RepoLink}}/issues/{{.Index}}">{{.Name}}</a>
+                    <span class="labels">
+                        {{range .Labels}}
+                            <span class="label" style="background-color: {{.Color}}">{{.Name}}</span>
+                        {{end}}
+                    </span>
+                    </h5>
                     <p class="info">
                         <span class="author"><img class="avatar" src="{{.Poster.AvatarLink}}" alt="" width="20"/>
                         <a href="/user/{{.Poster.Name}}">{{.Poster.Name}}</a></span>
